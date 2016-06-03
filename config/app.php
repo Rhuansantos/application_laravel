@@ -25,7 +25,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
+      // debu mode while is in production needs to be on
     'debug' => env('APP_DEBUG', false),
 
     /*
