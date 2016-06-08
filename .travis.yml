@@ -11,11 +11,13 @@ services:
   - postgresql
 
 
+
 before_script:
   - sudo apt-get update
   - sudo apt-get install language-pack-es
   - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/postgresql start 9.3
+  - sudo /etc/init.d/postgresql start 9.5
+  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
   - cp .env.travis .env
   - psql -c 'create database adopets_test;' -U postgres
   - composer self-update
@@ -23,8 +25,24 @@ before_script:
   - php artisan migrate
 
 
+
+sudo: false
+
+
+addons:
+  apt:
+    sources:
+    - precise-pgdg-9.5
+    packages:
+    - postgresql-9.5
+    - postgresql-contrib-9.5
+  postgresql: 9.5
+
 env:
   global:
+    - NODE_ENV=test
+    - PGPORT=5433
+    - PGHOST=localhost
     - setup=basic
     - APP_ENV=staging
     - APP_DEBUG=true
@@ -34,7 +52,7 @@ env:
     - SESSION_DRIVER=file
     - QUEUE_DRIVER=sync
 
-sudo: true
+
 
 install:
 - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
