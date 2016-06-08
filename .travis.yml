@@ -1,44 +1,15 @@
 language: php
 
 php:
+  - 5.6.21
+  - 5.5
   - 5.6
-
-matrix:
-  allow_failures:
-      - php: hhvm
-
-services:
-  - postgresql
-
-
-
-before_script:
-  - sudo apt-get install language-pack-es
-  - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/postgresql start 9.5
-  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  - cp .env.travis .env
-  - psql -c 'create database adopets_test;' -U postgres
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan migrate
-
-
-
-sudo: false
-
-
-addons:
-  apt:
-    sources:
-    - precise-pgdg-9.5
-    packages:
-    - postgresql-9.5
-    - postgresql-contrib-9.5
-  postgresql: 9.5
+  - 7.0
+  - hhvm
 
 env:
   global:
+    - setup=basic
     - NODE_ENV=test
     - PGPORT=5433
     - PGHOST=localhost
@@ -51,12 +22,33 @@ env:
     - SESSION_DRIVER=file
     - QUEUE_DRIVER=sync
 
+matrix:
+  include:
+    - php: 5.5.9
+      env: setup=lowest
+    - php: 5.6.21
+      env: setup=stable
 
+sudo: false
+
+services:
+  - postgresql
+
+before_install:
+  - travis_retry composer self-update
+  - sudo apt-get install language-pack-es
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql start 9.5
+  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+  - cp .env.travis .env
+  - psql -c 'create database adopets_test;' -U postgres
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan migrate
 
 install:
-- if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
-- if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-stable; fi
-- if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-dist; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
 
-script:
-  - vendor/bin/phpunit
+script: vendor/bin/phpunit
