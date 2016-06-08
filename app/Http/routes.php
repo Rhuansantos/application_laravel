@@ -13,7 +13,9 @@
 |
 */
 
-
+// $pets = DB::table('pet_models')->get();
+// // $pets = Pet::all();
+// print_r($pets);
 
 
 
@@ -30,6 +32,8 @@ Route::group(['middleware' => 'web'], function(){
 
 
 Route::get('/home', 'HomeController@index');
+Route::get('/pets', 'PetController@index');
+//Route::get('/pets', 'PetController@show');
 
 
 });
