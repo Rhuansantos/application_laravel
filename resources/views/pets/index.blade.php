@@ -24,18 +24,19 @@
       <td>
         <div class="btn-group" role="group" aria-label="...">
           <button type="button" class="btn btn-default">Edit</button>
-          <button type="button" class="btn btn-default">Delete</button>
+          {{-- <button type="button" class="btn btn-default">Delete</button> --}}
 
-           {{-- {!! Form::open(['route' => ['posts.destroy', $pet->id], 'method' => 'DELETE']) !!}
+          {!! Form::open(['route' => ['pets.destroy', $pet->id], 'method' => 'DELETE']) !!}
 
           {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
 
-          {!! Form::close() !!} --}}
+          {!! Form::close() !!}
 
-           <form class="" action="pets.destroy" method="DELETE">
+           {{-- <form class="" action="pets.destroy" method="DELETE">
             <input class="btn btn-danger btn-block" type="button" name="name" value="Delete">
           </form>
 
+        --}}
         </div>
       </td>
     </tr>

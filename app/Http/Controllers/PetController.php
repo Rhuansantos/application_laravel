@@ -63,11 +63,20 @@ class PetController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+          // $pets = DB::table('pet_models')->get();
+          $pets = PetController::find($id);
+          $pets->delete();
 
-      Pets::find($id)->delete();
-      \Flash::success('Product deleted.');
-      return redirect()->route('home');
+          //Session::flash('success', 'The post was successfully deleted.');
+
+          // $pets = DB::table('pet_models');
+          // $pets = DB::table('pet_models');
+          //
+          // pets::find($id)->delete();
+          //
+          // Session::flash('success', 'The post was successfully deleted.');
+          // return redirect()->route('home.index');
     }
 }

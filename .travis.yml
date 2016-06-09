@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 5.6.21
+  - 5.6
 
 sudo: required
 
@@ -33,7 +33,7 @@ before_install:
   - travis_retry composer self-update
   - sudo apt-get install language-pack-es
   - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/postgresql start 9.5
+  - sudo /etc/init.d/postgresql start 9.3
   - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
   - cp .env.travis .env
   - psql -c 'create database adopets_test;' -U postgres
