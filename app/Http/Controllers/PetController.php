@@ -18,13 +18,6 @@ class PetController extends Controller
   }
 
 
-  /**
-   *
-   *
-   * @return \Illuminate\Http\Response
-   */
-
-
     public function index()
     {
       $pets = DB::table('pet_models')->get();
@@ -34,24 +27,10 @@ class PetController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function create()
     {
 
     }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function store(Request $request)
@@ -60,12 +39,6 @@ class PetController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function show($id)
     {
@@ -74,12 +47,7 @@ class PetController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
 
     public function edit($id)
     {
@@ -87,28 +55,19 @@ class PetController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
 
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function destroy($id)
     {
         //
+      // Pets::find($id)->delete();
+      // \Flash::success('Product deleted.');
+      // return redirect()->route('home');
     }
 }

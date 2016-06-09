@@ -7,17 +7,18 @@ php:
   - 7.0
   - hhvm
 
+sudo: required
+
 env:
   global:
     - setup=basic
     - NODE_ENV=test
+    - DB_CONNECTION=psql
     - PGPORT=5433
     - PGHOST=localhost
-    - setup=basic
     - APP_ENV=staging
     - APP_DEBUG=true
     - APP_KEY=xxxx
-    - DB_CONNECTION=psql
     - CACHE_DRIVER=file
     - SESSION_DRIVER=file
     - QUEUE_DRIVER=sync
@@ -28,8 +29,6 @@ matrix:
       env: setup=lowest
     - php: 5.6.21
       env: setup=stable
-
-sudo: false
 
 services:
   - postgresql
