@@ -65,9 +65,9 @@ class PetController extends Controller
 
     public function destroy($id)
     {
-        //
-      // Pets::find($id)->delete();
-      // \Flash::success('Product deleted.');
-      // return redirect()->route('home');
+
+      Pets::find($id)->delete();
+      \Flash::success('Product deleted.');
+      return redirect()->route('home');
     }
 }
