@@ -6,7 +6,12 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\pet;
+use Session;
+
 
 class PetController extends Controller
 {
@@ -62,21 +67,19 @@ class PetController extends Controller
         //
     }
 
-
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-          // $pets = DB::table('pet_models')->get();
-          $pets = PetController::find($id);
-          $pets->delete();
 
-          //Session::flash('success', 'The post was successfully deleted.');
 
-          // $pets = DB::table('pet_models');
-          // $pets = DB::table('pet_models');
-          //
-          // pets::find($id)->delete();
-          //
-          // Session::flash('success', 'The post was successfully deleted.');
-          // return redirect()->route('home.index');
+    //  $pets  = Pets::where('id', '=', $id)->delete();
+
+      $pets = pet_models::find($id);
+
+      $pets->destroy();
+
+      Session::flash('flash_message', 'Task successfully deleted!');
+
+      return redirect()->route('home');
+
     }
 }

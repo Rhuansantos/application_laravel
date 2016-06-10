@@ -32,6 +32,7 @@
 
           {!! Form::close() !!}
 
+
            {{-- <form class="" action="pets.destroy" method="DELETE">
             <input class="btn btn-danger btn-block" type="button" name="name" value="Delete">
           </form>

@@ -32,12 +32,6 @@ Route::group(['middleware' => 'web'], function(){
 
 
 Route::get('/home', 'HomeController@index');
-Route::get('/pets', 'PetController@index');
-// Route::resource('/pets', 'PetController');
-//Route::resource('pets/{id}', 'PetController', ['only'=> ['index','create','store']]);
- Route::delete('pets/{id}',array('uses' => 'PetController@destroy', 'as' => 'pets.destroy'));
-
-// Route::delete('pets/{id}',array('uses' => 'PetController@destroy', 'as' => 'pets.destroy'));
 
 
 });
