@@ -25,8 +25,8 @@ class PetController extends Controller
 
     public function index()
     {
-      $pets = DB::table('pet_models')->get();
-      return view('pets/index')->with('pets', $pets);
+      // $pets = DB::table('pet_models')->get();
+      // return view('pets/index')->with('pets', $pets);
       //return view ('pets/index');
 
     }
@@ -71,15 +71,6 @@ class PetController extends Controller
     {
 
 
-    //  $pets  = Pets::where('id', '=', $id)->delete();
-
-      $pets = pet_models::find($id);
-
-      $pets->destroy();
-
-      Session::flash('flash_message', 'Task successfully deleted!');
-
-      return redirect()->route('home');
 
     }
 }

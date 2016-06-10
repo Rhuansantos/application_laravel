@@ -8,7 +8,7 @@ class pet extends Model
 {
 
 
-    //  protected $fillable = ['name'];
+  
 
 
 
