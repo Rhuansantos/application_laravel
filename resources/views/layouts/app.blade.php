@@ -48,7 +48,18 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/pets') }}">Pets</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Pets
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/pets') }}">Pets</li>
+                          <li><a href="{{ url('/pets/create') }}">Create a pet</li>
+                    </ul>
+
+
+                    </li>
+                    <li><a href="{{ url('/posts') }}">Posts</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

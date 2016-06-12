@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+
   <h2>Edit Post</h2>
   {!! Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'put')) !!}
     <div class="form-group">

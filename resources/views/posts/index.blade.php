@@ -2,6 +2,13 @@
 
 @section('content')
 
+
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
   <h2>Post</h2>
   <table class="table table-striped" >
     <tr>
@@ -20,6 +27,9 @@
       <tr>
         <td>
           {{$post->title}}
+        </td>
+        <td>
+          {{$post->body}}
         </td>
         <td>
           {{ link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-primary')) }}

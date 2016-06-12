@@ -11,7 +11,7 @@
     <th>Id</th>
     <th>Name</th>
     <th>Description</th>
-    <th>Price</th>
+    <th>Age</th>
   </tr>
   <tr>
 
@@ -20,11 +20,10 @@
       <td>{{ $pet->id}}</td>
       <td>{{ $pet->name}}</td>
       <td>{{ $pet->description}}</td>
-      <td>{{ $pet->price}}</td>
+      <td>{{ $pet->age}}</td>
       <td>
         <div class="btn-group" role="group" aria-label="...">
           <button type="button" class="btn btn-default">Edit</button>
-          {{-- <button type="button" class="btn btn-default">Delete</button> --}}
 
           {!! Form::open(['route' => ['pets.destroy', $pet->id], 'method' => 'DELETE']) !!}
 
@@ -33,11 +32,7 @@
           {!! Form::close() !!}
 
 
-           {{-- <form class="" action="pets.destroy" method="DELETE">
-            <input class="btn btn-danger btn-block" type="button" name="name" value="Delete">
-          </form>
 
-        --}}
         </div>
       </td>
     </tr>
