@@ -59,7 +59,7 @@
 
 
                     </li>
-                    <li><a href="{{ url('/posts') }}">Posts</a></li>
+                    {{-- <li><a href="{{ url('/posts') }}">Posts</a></li> --}}
                 </ul>
 
                 <!-- Right Side Of Navbar -->
