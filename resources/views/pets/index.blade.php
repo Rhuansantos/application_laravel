@@ -18,6 +18,7 @@
 
   </tr>
   <tr>
+  
 
   @foreach ($pets as $pet)
     <tr>
