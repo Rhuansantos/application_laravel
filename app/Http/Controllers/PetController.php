@@ -385,12 +385,13 @@ class PetController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $data = $request->only(
-          'description',
-          'age',
-          'pet_type',
-          'size',
-          'name'
+        'name',
+        'description',
+        'age',
+        'pet_type',
+        'size'
         );
         $pets = Pet::find($id);
         $pets->update($data);

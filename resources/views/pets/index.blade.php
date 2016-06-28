@@ -18,7 +18,7 @@
 
   </tr>
   <tr>
-  
+
 
   @foreach ($pets as $pet)
     <tr>
@@ -38,6 +38,11 @@
         {!! Form::close() !!}
           </div>
         </td>
+
+        <td>
+          {{ link_to_route('pets.edit', 'Edit', array($pet->id), array('class' => 'btn btn-primary')) }}
+        </td>
+
         <td>
           {!! Form::open(['route' => ['pets.edit', $pet->id], 'method' => 'EDIT']) !!}
           {!! Form::submit('Edit', ['class' => 'btn btn btn-primary btn-block']) !!}
