@@ -12,6 +12,6 @@ class Pet extends Model
     'pet_type',
     'size',
     'name',
-    'breed'
+    'breed',
   ];
 }

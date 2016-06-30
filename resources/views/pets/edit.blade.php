@@ -347,21 +347,27 @@
   <div class="form-group">
     {!! Form::label('pet_type') !!}
     {!! Form::select('pet_type', $petType, null, array('class' => 'form-control')) !!}
-    {{-- {!! Form::text('pet_type', null, array('class' => 'form-control')) !!} --}}
-
   </div>
+
+
+  <div class="form-group">
+    {!! Form::label('breed') !!}
+    {!! Form::select('breed', $dogOptions, null, array('class' => 'form-control')) !!}
+  </div>
+
+
+
     <div class="form-group">
-      {!! Form::label('Breed') !!}
+      {!! Form::label('breed') !!}
       {{ Form::select('breed', $dogOptions, null, array('class' => 'form-control')) }}
       {{-- {!! Form::text('breed', null, array('class' => 'form-control')) !!} --}}
+    </div>
 
-  </div>
     <div class="form-group" style="display: none">
-      {!! Form::label('Breed') !!}
+      {!! Form::label('breed') !!}
       {{ Form::select('breed', $catOptions, null, array('class' => 'form-control')) }}
       {{-- {!! Form::text('breed', null, array('class' => 'form-control')) !!} --}}
-
-  </div>
+    </div>
 
 
 
