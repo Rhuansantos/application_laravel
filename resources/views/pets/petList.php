@@ -103,7 +103,7 @@ $catOptions = [
   'Ukrainian Levkoy' => 'Ukrainian Levkoy',
 
 ];
- $dogOptions = [
+$dogOptions = [
 
        'None' => 'None',
        'Affenpinscher' => 'Affenpinscher',
