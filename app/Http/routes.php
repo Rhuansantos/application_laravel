@@ -13,10 +13,6 @@
 |
 */
 
-// $pets = DB::table('pet_models')->get();
-// // $pets = Pet::all();
-// print_r($pets);
-
 
 
 Route::get('/', function () {
@@ -32,7 +28,6 @@ Route::group(['middleware' => 'web'], function(){
 
 
 Route::get('/home', 'HomeController@index');
-Route::resource('posts', 'PostsController');
 Route::resource('pets', 'PetController');
 Route::get('/pets/create', 'PetController@SelectPet');
 
