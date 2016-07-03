@@ -517,5 +517,8 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
     'Volunteer' => $baseDir . '/database/migrations/2016_07_02_071151_volunteer.php',
+    'pet' => $baseDir . '/database/seeds/pet.php',
+    'pets' => $baseDir . '/database/seeds/pets.php',
 );

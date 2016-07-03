@@ -11,15 +11,15 @@ use App\Pet;
 class PetController extends Controller
 {
 
-  public function __construct(){
-    $this->middleware('auth');
-  }
+  // public function __construct(){
+  //   $this->middleware('auth');
+  // }
 
 
   public function SelectPet()
 {
 
-    $petType = [
+  $petType = [
     'Dog' => 'Dog',
     'Cat' => 'Cat',
   ];
@@ -231,11 +231,9 @@ class PetController extends Controller
         'Xoloitzcuintli' => 'Xoloitzcuintli',
         'Yorkshire Terrier' => 'Yorkshire Terrier',
 
-
-
     ];
 
-    $catOptions = [
+  $catOptions = [
     'None' => 'None',
     'Abyssinian' => 'Abyssinian',
     'Aegean' => 'Aegean',
@@ -341,7 +339,7 @@ class PetController extends Controller
 
     public function index()
     {
-        $pets = Pet::paginate(12);
+        $pets = Pet::paginate(20);
         return view ('pets.index', compact('pets'));
     }
 

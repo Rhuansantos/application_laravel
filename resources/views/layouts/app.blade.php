@@ -45,24 +45,45 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li class="dropdown">
+
+
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('/home') }}">Home</a></li>
+
+                <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         Pets
-                    </a>
+                      </a>
+
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('/pets') }}">Pets</li>
-                          <li><a href="{{ url('/pets/create') }}">Create a pet</li>
+                        <li><a href="{{ url('/pets') }}">Pets</a></li>
+                        <li><a href="{{ url('/pets/create') }}">Create a pet</a></li>
                     </ul>
 
+                </li>
 
-                    </li>
-                    {{-- <li><a href="{{ url('/posts') }}">Posts</a></li> --}}
-                </ul>
 
-                <!-- Right Side Of Navbar -->
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Organization
+                      </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/organization') }}">Organization</a></li>
+                        <li><a href="{{ url('/organization/create') }}">Create a volunteer</a></li>
+                    </ul>
+
+                </li>
+
+
+
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+
+
+
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
