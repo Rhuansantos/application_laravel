@@ -3,37 +3,37 @@
 @section('content')
 
   <div class="container">
-    <h1>Create a volunteer</h1>
+    <h1>Create a organization</h1>
   </div>
-
-
-
-
-
 
 
   <div class="container">
 
 
   <div class="col-lg-12">
-    {!! Form::open(array('route' => 'pets.store')) !!}
+    {!! Form::open(array('route' => 'organization.store')) !!}
+
       <div class="form-group">
-        {!! Form::label('name') !!}
-        {!! Form::text('name', null, array('class' => 'form-control')) !!}
-      </div>
-      <div class="form-group">
-        {!! Form::label('age') !!}
-        {!! Form::text('age', null, array('class' => 'form-control')) !!}
+        {!! Form::label('organization') !!}
+        {!! Form::text('organization', null, array('class' => 'form-control')) !!}
       </div>
 
       <div class="form-group">
-        {!! Form::label('size') !!}
-        {!! Form::text('size', null, array('class' => 'form-control')) !!}
+        {!! Form::label('state') !!}
+        {!! Form::text('state', null, array('class' => 'form-control')) !!}
       </div>
+
       <div class="form-group">
-        {!! Form::label('description') !!}
-        {!! Form::textarea('description', null, array('class' => 'form-control', 'size' => '50x3')) !!}
+        {!! Form::label('active') !!}
+        {!! Form::text('active', null, array('class' => 'form-control')) !!}
       </div>
+
+      <div class="form-group">
+        {!! Form::label('email') !!}
+        {!! Form::text('email', null, array('class' => 'form-control')) !!}
+      </div>
+
+
 
 
       {!! Form::token() !!}

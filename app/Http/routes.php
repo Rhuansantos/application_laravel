@@ -29,12 +29,12 @@ Route::group(['middleware' => 'web'], function(){
 
 Route::get('/home', 'HomeController@index');
 Route::resource('pets', 'PetController');
-    Route::resource('organization', 'organizationController');
+Route::resource('organization', 'OrganizationController');
 Route::get('/pets/create', 'PetController@SelectPet');
 
 
 });
 
-Route::auth();
+// Route::auth();
 
 Route::get('/home', 'HomeController@index');

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Organization extends Migration
+class Organizations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class Organization extends Migration
     public function up()
     {
         //
-        Schema::create('organization', function (Blueprint $table) {
+        //
+        Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('organization');
             $table->string('state');
-            $table->boolean('active')->null();
+            $table->boolean('active')->nullable(); // temporary;
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable(); // temporary;
             $table->rememberToken();
             $table->timestamps();
         });
@@ -32,6 +33,7 @@ class Organization extends Migration
      */
     public function down()
     {
-        Schema::drop('organization');
+        //
+          Schema::drop('organizations');
     }
 }

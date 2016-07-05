@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Admin extends Migration
+class Admins extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class Admin extends Migration
     {
         //
 
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('admins', function ($table) {
             $table->increments('id')->unique();
             $table->string('name');
             $table->string('lastName');
@@ -36,6 +36,6 @@ class Admin extends Migration
     public function down()
     {
         //
-        Schema::drop('admin');
+        Schema::drop('admins');
     }
 }

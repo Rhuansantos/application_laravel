@@ -14,18 +14,25 @@ class Pets extends Migration
     {
         //
         // adicionar genre
-        Schema::create('pets', function (Blueprint $table) {
+        Schema::create('pets', function ($table) {
             $table->increments('id')->unique();
-            $table->integer('organization_id');
+            $table->integer('organization_id')->unsigned()->nullable(); // temporary;
             $table->string('name');
             $table->string('age');
             $table->string('size');
             $table->string('pet_type');
             $table->string('breed');
             $table->text('description');
-            $table->boolean('sold');
+            $table->boolean('sold')->nullable(); // temporary
             $table->timestamps();
         });
+
+
+        // Schema::table('pets', function(Blueprint $table)
+        // {
+        //     $table->foreign('organization_id')->references('id')->on('organizations');
+        // });
+
     }
 
     /**

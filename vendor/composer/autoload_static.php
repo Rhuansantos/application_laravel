@@ -270,7 +270,7 @@ class ComposerStaticInit9403bc2b627fa0dbdf7fec7c351d6406
     );
 
     public static $classMap = array (
-        'Admin' => __DIR__ . '/../..' . '/database/migrations/2016_07_02_203611_admin.php',
+        'Admins' => __DIR__ . '/../..' . '/database/migrations/2016_07_04_203210_admins.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -346,7 +346,7 @@ class ComposerStaticInit9403bc2b627fa0dbdf7fec7c351d6406
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
-        'Organization' => __DIR__ . '/../..' . '/database/migrations/2016_07_02_070335_organization.php',
+        'Organizations' => __DIR__ . '/../..' . '/database/migrations/2016_07_04_203003_organizations.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -782,9 +782,7 @@ class ComposerStaticInit9403bc2b627fa0dbdf7fec7c351d6406
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
-        'Volunteer' => __DIR__ . '/../..' . '/database/migrations/2016_07_02_071151_volunteer.php',
-        'pet' => __DIR__ . '/../..' . '/database/seeds/pet.php',
-        'pets' => __DIR__ . '/../..' . '/database/seeds/pets.php',
+        'Volunteers' => __DIR__ . '/../..' . '/database/migrations/2016_07_04_203150_volunteers.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
