@@ -46,43 +46,40 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
+              <!-- Left Side Of Navbar -->
+              <ul class="nav navbar-nav">
+                  <li><a href="{{ url('/home') }}">Home</a></li>
 
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          Pets
+                        </a>
 
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        Pets
-                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="{{ url('/pets') }}">Pets</a></li>
+                          <li><a href="{{ url('/pets/create') }}">Create a pet</a></li>
+                      </ul>
 
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('/pets') }}">Pets</a></li>
-                        <li><a href="{{ url('/pets/create') }}">Create a pet</a></li>
-                    </ul>
-
-                </li>
-
-
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        Organization
-                      </a>
-
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('/organization') }}">Organization</a></li>
-                        <li><a href="{{ url('/organization/create') }}">Create a volunteer</a></li>
-                    </ul>
-
-                </li>
+                  </li>
 
 
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          Organization
+                        </a>
 
-            </ul>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="{{ url('/organization') }}">Organization</a></li>
+                          <li><a href="{{ url('/organization/create') }}">Create a volunteer</a></li>
+                      </ul>
 
-            <!-- Right Side Of Navbar -->
+                  </li>
 
 
+
+              </ul>
+
+              <!-- Right Side Of Navbar -->
 
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->

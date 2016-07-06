@@ -26,7 +26,7 @@ return [
     |
     */
       // debu mode while is in production needs to be on
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://adopets'),
 
     /*
     |--------------------------------------------------------------------------

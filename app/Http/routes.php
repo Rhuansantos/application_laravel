@@ -22,19 +22,25 @@ Route::get('/', function () {
 
 
 
-Route::group(['middleware' => 'web'], function(){
-
-  Route::auth();
+Route::group(['middleware' => 'organization'], function(){
 
 
-Route::get('/home', 'HomeController@index');
-Route::resource('pets', 'PetController');
-Route::resource('organization', 'OrganizationController');
-Route::get('/pets/create', 'PetController@SelectPet');
+
+      Route::get('/home', 'HomeController@index');
+
+      Route::resource('pets', 'PetController');
+      Route::get('/pets/create', 'PetController@SelectPet');
+
+
+      Route::resource('organization', 'OrganizationController');
+
+
+      Route::get('/organization/login', 'OrganizationController@login');
+      Route::post('/organization/login', 'OrganizationController@postLogin');
+
+
 
 
 });
 
 // Route::auth();
-
-Route::get('/home', 'HomeController@index');

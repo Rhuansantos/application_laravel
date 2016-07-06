@@ -20,7 +20,7 @@ class Organizations extends Migration
             $table->string('state');
             $table->boolean('active')->nullable(); // temporary;
             $table->string('email')->unique();
-            $table->string('password')->nullable(); // temporary;
+            $table->string('password'); 
             $table->rememberToken();
             $table->timestamps();
         });

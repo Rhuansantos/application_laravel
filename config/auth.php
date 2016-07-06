@@ -36,14 +36,35 @@ return [
     */
 
     'guards' => [
-        'web' => [
+
+      'web' => [
+         'driver' => 'session',
+         'provider' => 'users',
+     ],
+
+      // 'admin' => [
+      //     'driver' => 'session',
+      //     'provider' => 'admins',
+      // ],
+      //
+      //   'user' => [
+      //       'driver' => 'session',
+      //       'provider' => 'user',
+      //   ],
+
+        'organization' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'organization',
+        ],
+
+        'volunteer' => [
+            'driver' => 'session',
+            'provider' => 'volunteer',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'user',
         ],
     ],
 
@@ -68,6 +89,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'organization' => [
+            'driver' => 'eloquent',
+            'model' => App\Organization::class,
+        ],
+
+        'volunteer' => [
+            'driver' => 'eloquent',
+            'model' => App\Volunteer::class,
         ],
 
         // 'users' => [

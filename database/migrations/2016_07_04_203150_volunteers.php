@@ -18,7 +18,7 @@ class Volunteers extends Migration
         $table->integer('organization_id')->unsigned()->nullable();
         $table->string('name');
         $table->string('lastname');
-        $table->boolean('active')->null();
+        $table->boolean('active')->nullable();
         $table->string('email')->unique();
         $table->string('password');
         $table->rememberToken();
