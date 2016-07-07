@@ -20,11 +20,16 @@ Route::get('/', function () {
 });
 
 
+Route::get('/organization/login', 'OrganizationController@login');
+Route::post('/organization/login', 'OrganizationController@postLogin');
+
 
 
 Route::group(['middleware' => 'organization'], function(){
 
 
+
+    Route::get('/organization/logout', 'OrganizationController@logout');
 
       Route::get('/home', 'HomeController@index');
 
@@ -35,12 +40,14 @@ Route::group(['middleware' => 'organization'], function(){
       Route::resource('organization', 'OrganizationController');
 
 
-      Route::get('/organization/login', 'OrganizationController@login');
-      Route::post('/organization/login', 'OrganizationController@postLogin');
+      // Route::get('/organization/login', 'OrganizationController@login');
+      // Route::get('organization/log', 'OrganizationController@create');
+
+      // Route::post('/organization/login', 'OrganizationController@postLogin');
 
 
 
 
 });
 
-// Route::auth();
+Route::auth();
