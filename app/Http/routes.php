@@ -15,39 +15,51 @@
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+  Route::get('/', function () {
+      return view('welcome');
+  });
 
-
-Route::get('/organization/login', 'OrganizationController@login');
-Route::post('/organization/login', 'OrganizationController@postLogin');
-
-
-
-Route::group(['middleware' => 'organization'], function(){
+// Allow the user to register, login and reset the passowrd
+  // Route::auth();
 
 
 
-    Route::get('/organization/logout', 'OrganizationController@logout');
 
-      Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'web'], function(){
 
-      Route::resource('pets', 'PetController');
-      Route::get('/pets/create', 'PetController@SelectPet');
-
-
-      Route::resource('organization', 'OrganizationController');
-
-
-      // Route::get('/organization/login', 'OrganizationController@login');
-      // Route::get('organization/log', 'OrganizationController@create');
-
-      // Route::post('/organization/login', 'OrganizationController@postLogin');
-
-
-
+  Route::Auth();
 
 });
 
-Route::auth();
+
+  Route::group(['middleware' => 'organization'], function(){
+
+
+
+          Route::group(['middleware' => 'auth:organization'], function(){
+
+            Route::get('/organization', 'OrganizationController@index');
+
+            // Organization CRUD
+            Route::resource('organizationT', 'OrganizationController');
+
+
+          });
+
+            // Main page/ dashboard
+            Route::get('/home', 'HomeController@index');
+
+            //Organization login
+            Route::get('/organization/logout', 'OrganizationController@logout');
+            Route::get('/organization/login', 'OrganizationController@login');
+            Route::post('/organization/login', 'OrganizationController@postLogin');
+
+
+
+
+            /// Pets CRUD and Get
+            Route::resource('pets', 'PetController');
+            Route::get('/pets/create', 'PetController@SelectPet');
+
+
+  });

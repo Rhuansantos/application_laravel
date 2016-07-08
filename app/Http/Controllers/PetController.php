@@ -11,9 +11,11 @@ use App\Pet;
 class PetController extends Controller
 {
 
-  // public function __construct(){
-  //   $this->middleware('auth');
-  // }
+  public function __construct(){
+
+    $this->middleware('auth:organization');
+
+  }
 
 
   public function SelectPet()
