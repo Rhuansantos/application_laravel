@@ -3,35 +3,47 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class Organization
+
+class organization
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
 
 
-    //  public function __construct(Guard $organization)
-    //   {
-    //       $this->organization = $organization;
-    //   }
+
+  public function handle($request, Closure $next, $guard = null)
+  {
 
 
-    public function handle($request, Closure $next)
-    {
-      if (Auth::guard($guard)->guest()) {
-          if ($request->ajax() || $request->wantsJson()) {
-              return response('Unauthorized.', 401);
-          } else {
-              return redirect()->guest('organization/login');
-          }
-      }
+    //
+    // if(auth()->guard('organization')){
+    //     return redirect('/pets');
+    // }
 
-      return $next($request);
+        if (Auth::guard($guard)->guest()) {
+
+            if ($request->ajax() || $request->wantsJson()) {
+
+                return response('Unauthorized.', 401);
+            }
+            else {
+
+              // return redirect('organization/login');
+
+            }
+        }
+
+
+
+
+
+
+
+        return $next($request);
+
+
   }
+
+
 
 }

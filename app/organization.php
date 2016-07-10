@@ -28,6 +28,9 @@ class Organization extends Authenticatable
      */
 
 
+
+
+
          protected $fillable = [
            'organization',
            'state',

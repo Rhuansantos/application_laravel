@@ -7,7 +7,7 @@
   </div>
 
 
-  <div class="container">
+  {{-- <div class="container">
 
 
   <div class="col-lg-12">
@@ -41,7 +41,7 @@
     {!! Form::close() !!}
 
       </div>
-      </div>
+      </div> --}}
 
 
 

@@ -27,39 +27,31 @@
 
 Route::group(['middleware' => 'web'], function(){
 
-  Route::Auth();
+  // Route::Auth();
+  Route::get('/organization/login', 'OrganizationLoginController@login');
+
 
 });
 
 
+// Organization Route
   Route::group(['middleware' => 'organization'], function(){
 
 
+      Route::resource('organizationAuth', 'OrganizationController');
 
-          Route::group(['middleware' => 'auth:organization'], function(){
+      // Main page/ dashboard
+      Route::get('/home', 'HomeController@index');
 
-            Route::get('/organization', 'OrganizationController@index');
+      //Organization login
+      Route::get('/organization/logout', 'OrganizationLoginController@logout');
 
-            // Organization CRUD
-            Route::resource('organizationT', 'OrganizationController');
-
-
-          });
-
-            // Main page/ dashboard
-            Route::get('/home', 'HomeController@index');
-
-            //Organization login
-            Route::get('/organization/logout', 'OrganizationController@logout');
-            Route::get('/organization/login', 'OrganizationController@login');
-            Route::post('/organization/login', 'OrganizationController@postLogin');
+      Route::post('/organization/login', 'OrganizationLoginController@postLogin');
 
 
-
-
-            /// Pets CRUD and Get
-            Route::resource('pets', 'PetController');
-            Route::get('/pets/create', 'PetController@SelectPet');
+      /// Pets CRUD and Get
+      Route::resource('pets', 'PetController');
+      Route::get('/pets/create', 'PetController@SelectPet');
 
 
   });

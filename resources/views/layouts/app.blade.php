@@ -70,7 +70,7 @@
 
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="{{ url('/organization') }}">Organization</a></li>
-                          <li><a href="{{ url('/organization/create') }}">Create a volunteer</a></li>
+                          <li><a href="{{ url('/organizationAuth/create') }}">Create a volunteer</a></li>
                       </ul>
 
                   </li>
@@ -91,8 +91,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{-- {{ Auth::user()->name }} <span class="caret"></span> --}}
-                                  {{-- {{auth()->guard('organization')->user()}} <span class="caret"></span> --}}
-                                  logado <span class="caret"></span>
+                                  {{auth()->guard('organization')->user()->organization}} <span class="caret"></span>
+                                  {{-- logado <span class="caret"></span> --}}
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

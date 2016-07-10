@@ -28,17 +28,17 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    // }
 
     /**
      * Get a validator for an incoming registration request.
