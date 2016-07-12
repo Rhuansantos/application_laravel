@@ -22,75 +22,73 @@
 // Allow the user to register, login and reset the passowrd
   // Route::auth();
 
-
-
-
 Route::group(['middleware' => ['web']], function(){
 
   Route::Auth();
 
-
   Route::get('/organization/login', 'OrganizationLoginController@login');
   Route::post('/organization/login', 'OrganizationLoginController@postLogin');
 
-  Route::get('/volunteer/login', 'volunteerLoginController@login');
-  Route::post('/volunteer/login', 'volunteerLoginController@postLogin');
+  // Route::get('/volunteer/login', 'volunteerLoginController@login');
+  // Route::post('/volunteer/login', 'volunteerLoginController@postLogin');
 
-  Route::get('/volunteer/logout', 'volunteerLoginController@logout');
+  Route::get('/volunteer/logout', 'OrganizationLoginController@logoutVolunteer');
 
+
+    // Route::get('/organizationAuth', [
+    //   'middleware' => 'volunteer',
+    //   'uses' => 'OrganizationController@index'
+    // ]);
 
 
 });
 
 
 
+  Route::group(['before' => ['volunteer']], function(){
 
+    //pets Route
+    Route::resource('pets', 'PetController');
+    Route::get('/pets/create', 'PetController@SelectPet');
 
+    // Inside off Organization Atuh
+    Route::resource('organizationAuth', 'OrganizationController');
 
-// Check If the user is log or not
-Route::get('/profile', function() {
-        if(auth()->guard('organization')->check()){
-             print_r(auth()->guard('organization')->user()->toArray());
-        }
-
-        if(auth()->guard('volunteer')->check()){
-            print_r(auth()->guard('volunteer')->user()->toArray());
-        }
-    });
-
-
-    Route::group(['middleware' => ['volunteer', 'organization']], function(){
-
-        // Pets CRUD and Get
-        Route::resource('pets', 'PetController');
-
-
-
-        // Inside off Organization Atuh
-        Route::resource('organizationAuth', 'OrganizationController');
-
-        // Main page/ dashboard
-        Route::get('/home', 'HomeController@index');
-
-        //Organization login
-        Route::get('/organization/logout', 'OrganizationLoginController@logout');
-
-
-
-    });
+  });
 
 
 
 // Organization Route
-  Route::group(['middleware' => ['organization']], function(){
+  Route::group(['before' => ['organization']], function(){
 
+      // Pets CRUD and Get
+      Route::resource('pets', 'PetController');
 
+      // Main page/ dashboard
+      Route::get('/home', 'HomeController@index');
 
+      //Organization login
+      Route::get('/organization/logout', 'OrganizationLoginController@logout');
+
+      //pets Route
+      Route::resource('pets', 'PetController');
       Route::get('/pets/create', 'PetController@SelectPet');
 
-
-      // pets Rout
-      // Route::resource('pets', 'PetController');
-      // Route::get('/pets/create', 'PetController@SelectPet');
-
   });
+
+
+
+
+/// =====================================  Production routes =====================================
+
+
+  // Check If the user is log or not
+  Route::get('/profile', function() {
+          if(auth()->guard('organization')->check()){
+               print_r(auth()->guard('organization')->user()->toArray());
+          }
+
+          if(auth()->guard('volunteer')->check()){
+              print_r(auth()->guard('volunteer')->user()->toArray());
+          }
+      });

@@ -18,10 +18,10 @@ class Authenticate
      */
 
 
-     public function __construct(Guard $auth)
-      {
-          $this->auth = $auth;
-      }
+    //  public function __construct(Guard $auth)
+    //   {
+    //       $this->auth = $auth;
+    //   }
 
 
     public function handle($request, Closure $next, $guard = null)
@@ -29,6 +29,7 @@ class Authenticate
 
 
         // if (Auth::guard($guard)->guest()) {
+        //   if(auth()->guard('organization')->guest()){
         //
         //     if ($request->ajax() || $request->wantsJson()) {
         //
@@ -43,7 +44,7 @@ class Authenticate
         // return $next($request);
 
 
-        // 
+        //
         // if ($request->ajax() || $request->wantsJson()) {
         //
         //     return response('Unauthorized.', 401);

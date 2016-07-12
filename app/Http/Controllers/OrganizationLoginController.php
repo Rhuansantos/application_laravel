@@ -17,7 +17,9 @@ class OrganizationLoginController extends Controller
 
   use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+   protected $redirectTo = '/organizationAuth';
 
+   
     // Redirect for the organization login page
     public function login () {
 
@@ -55,7 +57,12 @@ class OrganizationLoginController extends Controller
           if ( auth()->guard('organization')->attempt($credentials)
                 ||auth()->guard('volunteer')->attempt($credentials) ) {
 
-              return redirect('/organizationAuth');
+                  // if(auth()->guard = 'volunteer'){
+                  //
+                  //     return redirect('/pets');
+                  // }
+
+                  return redirect('/organizationAuth');
 
           }else
           {
@@ -70,6 +77,12 @@ class OrganizationLoginController extends Controller
     public function logout(){
       // dd($logout);
       auth()->guard('organization')->logout();
+      return redirect('/organization/login');
+    }
+
+    public function logoutVolunteer(){
+      // dd($logout);
+      auth()->guard('volunteer')->logout();
       return redirect('/organization/login');
     }
 
