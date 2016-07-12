@@ -31,6 +31,7 @@ class Organization extends Authenticatable
 
 
 
+
          protected $fillable = [
            'organization',
            'state',
@@ -38,6 +39,11 @@ class Organization extends Authenticatable
            'email',
            'password'
 
+         ];
+
+
+         protected $hidden = [
+             'password', 'remember_token',
          ];
 
 

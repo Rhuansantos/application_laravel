@@ -42,16 +42,6 @@ return [
          'provider' => 'users',
      ],
 
-      // 'admin' => [
-      //     'driver' => 'session',
-      //     'provider' => 'admins',
-      // ],
-      //
-        'user' => [
-            'driver' => 'session',
-            'provider' => 'user',
-        ],
-
         'organization' => [
             'driver' => 'session',
             'provider' => 'organization',
@@ -86,10 +76,10 @@ return [
     */
 
     'providers' => [
-        // 'users' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\User::class,
-        // ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
 
         'organization' => [
             'driver' => 'eloquent',

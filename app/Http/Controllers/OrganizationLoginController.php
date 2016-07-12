@@ -8,12 +8,14 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use Validator;
-// use Illuminate\Foundation\Auth\ThrottlesLogins;
-// use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 
 class OrganizationLoginController extends Controller
 {
+
+  use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
 
     // Redirect for the organization login page
@@ -50,13 +52,14 @@ class OrganizationLoginController extends Controller
 
 
           //if everything goes fine
-          if ( auth()->guard('organization')->attempt($credentials) ) {
+          if ( auth()->guard('organization')->attempt($credentials)
+                ||auth()->guard('volunteer')->attempt($credentials) ) {
 
-              return redirect('/home');
+              return redirect('/organizationAuth');
 
           }else
           {
-              return redirect('/organization/login')
+              return redirect('/volunteer/login')
                       ->withErros('erros', 'Wrong login')
                       ->withInput();
           }

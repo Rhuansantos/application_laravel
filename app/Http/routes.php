@@ -25,33 +25,72 @@
 
 
 
-Route::group(['middleware' => 'web'], function(){
+Route::group(['middleware' => ['web']], function(){
 
-  // Route::Auth();
+  Route::Auth();
+
+
   Route::get('/organization/login', 'OrganizationLoginController@login');
+  Route::post('/organization/login', 'OrganizationLoginController@postLogin');
+
+  Route::get('/volunteer/login', 'volunteerLoginController@login');
+  Route::post('/volunteer/login', 'volunteerLoginController@postLogin');
+
+  Route::get('/volunteer/logout', 'volunteerLoginController@logout');
+
 
 
 });
 
 
+
+
+
+
+// Check If the user is log or not
+Route::get('/profile', function() {
+        if(auth()->guard('organization')->check()){
+             print_r(auth()->guard('organization')->user()->toArray());
+        }
+
+        if(auth()->guard('volunteer')->check()){
+            print_r(auth()->guard('volunteer')->user()->toArray());
+        }
+    });
+
+
+    Route::group(['middleware' => ['volunteer', 'organization']], function(){
+
+        // Pets CRUD and Get
+        Route::resource('pets', 'PetController');
+
+
+
+        // Inside off Organization Atuh
+        Route::resource('organizationAuth', 'OrganizationController');
+
+        // Main page/ dashboard
+        Route::get('/home', 'HomeController@index');
+
+        //Organization login
+        Route::get('/organization/logout', 'OrganizationLoginController@logout');
+
+
+
+    });
+
+
+
 // Organization Route
-  Route::group(['middleware' => 'organization'], function(){
+  Route::group(['middleware' => ['organization']], function(){
 
 
-      Route::resource('organizationAuth', 'OrganizationController');
 
-      // Main page/ dashboard
-      Route::get('/home', 'HomeController@index');
-
-      //Organization login
-      Route::get('/organization/logout', 'OrganizationLoginController@logout');
-
-      Route::post('/organization/login', 'OrganizationLoginController@postLogin');
-
-
-      /// Pets CRUD and Get
-      Route::resource('pets', 'PetController');
       Route::get('/pets/create', 'PetController@SelectPet');
 
+
+      // pets Rout
+      // Route::resource('pets', 'PetController');
+      // Route::get('/pets/create', 'PetController@SelectPet');
 
   });

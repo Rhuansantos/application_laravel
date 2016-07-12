@@ -11,7 +11,8 @@ class OrganizationController extends Controller
 
   public function __construct(){
 
-    $this->middleware('auth:organization');
+    $this->middleware('auth');
+    $this->middleware('organization');
 
 }
 
