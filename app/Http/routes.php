@@ -29,8 +29,8 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('/organization/login', 'OrganizationLoginController@login');
   Route::post('/organization/login', 'OrganizationLoginController@postLogin');
 
-  // Route::get('/volunteer/login', 'volunteerLoginController@login');
-  // Route::post('/volunteer/login', 'volunteerLoginController@postLogin');
+  // Route::get('/volunteer/login', 'OrganizationLoginController@login');
+  // Route::post('/volunteer/login', 'OrganizationLoginController@login');
 
   Route::get('/volunteer/logout', 'OrganizationLoginController@logoutVolunteer');
 
@@ -44,8 +44,8 @@ Route::group(['middleware' => ['web']], function(){
 });
 
 
-
-  Route::group(['before' => ['volunteer']], function(){
+// Volunteer route
+  Route::group(['Middleware' => ['volunteer']], function(){
 
     //pets Route
     Route::resource('pets', 'PetController');
@@ -55,7 +55,6 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('organizationAuth', 'OrganizationController');
 
   });
-
 
 
 // Organization Route

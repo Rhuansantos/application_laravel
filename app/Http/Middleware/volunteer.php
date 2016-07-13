@@ -15,17 +15,17 @@ class volunteer
 
 
         // if the user is a guest
-      //    if(auth()->guard('volunteer')->guest()){
-       //
-      //      if ($request->ajax() || $request->wantsJson()) {
-       //
-      //          return response('Unauthorized.', 401);
-      //      }
-      //      else {
-       //
-      //          return redirect()->guest('organization/login');
-      //      }
-      //  }
+         if(auth()->guard('volunteer')->guest()){
+
+           if ($request->ajax() || $request->wantsJson()) {
+
+               return response('Unauthorized.', 401);
+           }
+           else {
+
+               return redirect()->guest('organization/login');
+           }
+       }
 
 
 
@@ -34,9 +34,9 @@ class volunteer
           // if the user have this guard stay if not give a unauthorized message
             if (auth()->guard('volunteer')->check()) {
 
-                // echo "Eu sou um voluntario!!!";
+                echo "Eu sou um voluntario!!!";
 
-                return redirect('/home');
+                // return redirect('/home');
             }
             else{
                   return response('Unauthorized.', 401);

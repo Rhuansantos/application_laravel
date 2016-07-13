@@ -16,7 +16,7 @@ class organization
 
 
 
-      // if the user is a guest
+      //if the user is a guest
        if(auth()->guard('organization')->guest()){
 
          if ($request->ajax() || $request->wantsJson()) {
