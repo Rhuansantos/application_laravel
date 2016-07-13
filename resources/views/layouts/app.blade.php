@@ -88,17 +88,17 @@
 
 
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/organization/login') }}">Org Login</a></li>
-                        {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    {{-- @if (Auth::guest()) --}}
+                    @if (auth()->guard('organization')->guest())
+
+                      <li><a href="{{ url('/organization/login') }}">Org Login</a></li>
+                      {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
+                      <li><a href="{{ url('/register') }}">Register</a></li>
+
                     @else
 
                     {{-- @elseif (auth()->guard('organization')->user()) --}}
                         {{-- <h1>test</h1> --}}
-
-
-
 
 
                         <li class="dropdown">
@@ -112,6 +112,10 @@
                                 <li><a href="{{ url('organization/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
+
+
+
+
                     @endif
 
 

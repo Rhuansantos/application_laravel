@@ -12,21 +12,38 @@ class volunteer
     public function handle($request, Closure $next, $guard = null)
     {
 
-      // if the user is a guest redirect to the login screen
-      if (auth()->guard($guard)->guest()) {
-        echo "visitante|||";
-        // return redirect()->guest('organization/login');
-      }
 
-      // if the user have this guard stay if not give a unauthorized message
-      if (auth()->guard('volunteer')->check() || auth()->guard('organization')->Check()) {
 
-          echo "voluntario";
-      }
-      else{
-            return response('Unauthorized.', 401);
-      }
+        // if the user is a guest
+      //    if(auth()->guard('volunteer')->guest()){
+       //
+      //      if ($request->ajax() || $request->wantsJson()) {
+       //
+      //          return response('Unauthorized.', 401);
+      //      }
+      //      else {
+       //
+      //          return redirect()->guest('organization/login');
+      //      }
+      //  }
 
-        return $next($request);
-    }
+
+
+     if (Auth::guard('volunteer')->user()) {
+
+          // if the user have this guard stay if not give a unauthorized message
+            if (auth()->guard('volunteer')->check()) {
+
+                // echo "Eu sou um voluntario!!!";
+
+                return redirect('/home');
+            }
+            else{
+                  return response('Unauthorized.', 401);
+            }
+        }
+          return $next($request);
+  }
+
+
 }
