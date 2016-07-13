@@ -4,18 +4,6 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-// class Organization extends Model
-// {
-//     //
-//     protected $fillable = [
-//       'organization',
-//       'state',
-//       'active',
-//       'email',
-//       'password'
-//
-//     ];
-// }
 
 
 class Organization extends Authenticatable
@@ -26,10 +14,6 @@ class Organization extends Authenticatable
      *
      * @var array
      */
-
-
-
-
 
 
          protected $fillable = [

@@ -14,12 +14,9 @@ class PetController extends Controller
 
   public function __construct(){
 
-    // $this->middleware('volunteer');
-    // $this->middleware('volunteer');
-    // $this->middleware('auth');
+
     $this->middleware(['organization']);
 
-      // $this->middleware('organization', ['except' => 'create', 'index']);
 
 
   }
