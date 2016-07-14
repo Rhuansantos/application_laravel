@@ -39,13 +39,15 @@ class Kernel extends HttpKernel
         ],
 
         'organization' => [
-          'auth' => \App\Http\Middleware\Authenticate::class,
           'organization' => \App\Http\Middleware\organization::class,
+          'auth' => \App\Http\Middleware\Authenticate::class, //-> move to the groups
+
         ],
 
         'volunteer' => [
-          'auth' => \App\Http\Middleware\Authenticate::class,
           'volunteer' => \App\Http\Middleware\volunteer::class,
+          'auth' => \App\Http\Middleware\Authenticate::class, //-> move to the groups
+
         ],
 
         'api' => [
@@ -61,8 +63,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-
-        // 'auth' => \App\Http\Middleware\Authenticate::class, -> move to the groups
+        // 'organization' => \App\Http\Middleware\organization::class,
+        // 'volunteer' => \App\Http\Middleware\volunteer::class,
+        // 'auth' => \App\Http\Middleware\Authenticate::class, //-> move to the groups
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,

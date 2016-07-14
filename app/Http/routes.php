@@ -45,20 +45,19 @@ Route::group(['middleware' => ['web']], function(){
 
 
 // Volunteer route
-  Route::group(['Middleware' => ['volunteer']], function(){
+  Route::group(['Middleware' => 'volunteer'], function(){
 
     //pets Route
     Route::resource('pets', 'PetController');
     Route::get('/pets/create', 'PetController@SelectPet');
 
-    // Inside off Organization Atuh
-    Route::resource('organizationAuth', 'OrganizationController');
+
 
   });
 
 
 // Organization Route
-  Route::group(['before' => ['organization']], function(){
+  Route::group(['Middleware' => 'organization'], function(){
 
       // Pets CRUD and Get
       Route::resource('pets', 'PetController');
@@ -69,6 +68,8 @@ Route::group(['middleware' => ['web']], function(){
       //Organization login
       Route::get('/organization/logout', 'OrganizationLoginController@logout');
 
+      // Inside off Organization Atuh
+      Route::resource('organizationAuth', 'OrganizationController');
       //pets Route
       Route::resource('pets', 'PetController');
       Route::get('/pets/create', 'PetController@SelectPet');

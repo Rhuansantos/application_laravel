@@ -20,10 +20,10 @@ class Authenticate
 
     //  protected $auth;
 
-    //  public function __construct(Guard $auth)
-    //   {
-    //       $this->auth = $auth;
-    //   }
+     public function __construct(Guard $auth)
+      {
+          $this->auth = $auth;
+      }
 
 
 
@@ -31,29 +31,31 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
 
+        echo "organization:";
+        echo "<br>";
+        var_dump(auth::guard('organization')->guest());
+        echo "<br>";
+        echo "volunteer:";
+        echo "<br>";
+        var_dump(auth::guard('volunteer')->guest());
 
-//   if (Auth::guard($guard)->guest()) {
-//         // if (Auth::guard('volunteer')->guest()) {
-//           if(auth()->guard('organization')->guest()){
-//
-//             if ($request->ajax() || $request->wantsJson()) {
-//
-//                 return response('Unauthorized.', 401);
-//             }
-//             else {
-//
-//                 return redirect()->guest('organization/login');
-//             }
-//         }
-//
-// }
-        // return $next($request);
 
+      // if both user are false
+      if(auth::guard('organization')->guest() && auth::guard('volunteer')->guest()){
+
+
+              if ($request->ajax() || $request->wantsJson()) {
+
+                  return response('Unauthorized.', 401);
+              }
+              else {
+
+                  return redirect()->guest('organization/login');
+              }
+        }
 
 
           return $next($request);
       }
-
-
 
 }

@@ -15,8 +15,9 @@ class PetController extends Controller
   public function __construct(){
 
 
-    $this->middleware(['organization']);
+    // $this->middleware('organization', ['except' => 'create']);
 
+    $this->middleware('organization');
 
 
   }
@@ -345,6 +346,7 @@ class PetController extends Controller
 
     public function index()
     {
+
         $pets = Pet::paginate(20);
         return view ('pets.index', compact('pets'));
     }
