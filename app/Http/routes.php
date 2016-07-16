@@ -44,17 +44,6 @@ Route::group(['middleware' => ['web']], function(){
 });
 
 
-// Volunteer route
-  Route::group(['Middleware' => 'volunteer'], function(){
-
-    //pets Route
-    Route::resource('pets', 'PetController');
-    Route::get('/pets/create', 'PetController@SelectPet');
-
-
-
-  });
-
 
 // Organization Route
   Route::group(['Middleware' => 'organization'], function(){
@@ -71,7 +60,7 @@ Route::group(['middleware' => ['web']], function(){
       // Inside off Organization Atuh
       Route::resource('organizationAuth', 'OrganizationController');
       //pets Route
-      Route::resource('pets', 'PetController');
+      // Route::resource('pets', 'PetController');
       Route::get('/pets/create', 'PetController@SelectPet');
 
   });
