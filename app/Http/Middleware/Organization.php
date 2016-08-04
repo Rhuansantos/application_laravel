@@ -16,18 +16,9 @@ class organization
 
 
 
-      //if the user is a guest
-       if(auth()->guard('organization')->guest()){
 
-         if ($request->ajax() || $request->wantsJson()) {
 
-             return response('Unauthorized.', 401);
-         }
-         else {
 
-             return redirect()->guest('organization/login');
-         }
-     }
 
 
 
@@ -44,6 +35,10 @@ class organization
 
 
        }
+
+
+
+
 
         return $next($request);
    }

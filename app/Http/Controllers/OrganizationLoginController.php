@@ -19,7 +19,7 @@ class OrganizationLoginController extends Controller
 
    protected $redirectTo = '/organizationAuth';
 
-   
+
     // Redirect for the organization login page
     public function login () {
 
@@ -57,16 +57,20 @@ class OrganizationLoginController extends Controller
           if ( auth()->guard('organization')->attempt($credentials)
                 ||auth()->guard('volunteer')->attempt($credentials) ) {
 
-                  // if(auth()->guard = 'volunteer'){
-                  //
-                  //     return redirect('/pets');
-                  // }
+                  // Check who the user are and redirect base on that.
+                  if(auth::guard('organization')->check()){
 
-                  return redirect('/organizationAuth');
+                      return redirect('/organizationAuth');
 
+                  }if(auth::guard('volunteer')->check()){
+
+                      return redirect('/pets');
+                  }
+
+          // if the login fails
           }else
           {
-              return redirect('/volunteer/login')
+              return redirect('/organization/login')
                       ->withErros('erros', 'Wrong login')
                       ->withInput();
           }
@@ -74,18 +78,21 @@ class OrganizationLoginController extends Controller
     }
 
 
-    public function logout(){
-      // dd($logout);
-      auth()->guard('organization')->logout();
-      return redirect('/organization/login');
-    }
+      public function logout(){
+        // dd($logout);
 
-    public function logoutVolunteer(){
-      // dd($logout);
-      auth()->guard('volunteer')->logout();
-      return redirect('/organization/login');
-    }
+          // Check the user and make a logout
+          if(auth::guard('organization')) {
+              auth()->guard('organization')->logout();
+          }
+          if(auth::guard('volunteer')){
 
+              auth()->guard('volunteer')->logout();
+          }
 
+        // return to the login screen
+        return redirect('/organization/login');
+
+      }
 
 }

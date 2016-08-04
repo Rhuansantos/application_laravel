@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
 {
+
   protected $fillable = [
     'description',
     'age',
@@ -15,4 +16,9 @@ class Pet extends Model
     'name',
     'breed'
   ];
+
+  // public function relationPets(){
+  //     return $this->hasOne(organization::class);
+  // }
+
 }

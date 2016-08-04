@@ -16,7 +16,7 @@ class Pets extends Migration
         // adicionar genre
         Schema::create('pets', function ($table) {
             $table->increments('id')->unique();
-            $table->integer('organization_id')->unsigned()->nullable(); // temporary;
+            // $table->integer('organization_id')->unsigned()->nullable(); // temporary;
             $table->string('name');
             $table->string('age');
             $table->string('size');
