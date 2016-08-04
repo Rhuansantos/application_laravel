@@ -15,4 +15,9 @@ class Pet extends Model
     'name',
     'breed'
   ];
+
+  public function relationOrgToPet(){
+
+    belongsToMany('App\organization_id');
+  }
 }
