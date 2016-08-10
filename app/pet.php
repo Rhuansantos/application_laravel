@@ -13,11 +13,19 @@ class Pet extends Model
     'pet_type',
     'size',
     'name',
-    'breed'
+    'breed',
+    'organization_id'
   ];
+
 
   public function relationOrgToPet(){
 
-    belongsToMany('App\organization_id');
+      return $this->belongsTo('App\organization', 'organization_id');
+
   }
+
+
+  
+
+
 }
