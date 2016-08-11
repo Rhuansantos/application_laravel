@@ -14,15 +14,11 @@ class Pets extends Migration
     {
         //
         // adicionar genre
-<<<<<<< HEAD
-        Schema::create('pets', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('organization_id')->unsigned()->nullable(); // temporary;
-=======
+
+
         Schema::create('pets', function ($table) {
             $table->increments('id')->unique();
             // $table->integer('organization_id')->unsigned()->nullable(); // temporary;
->>>>>>> 3ab638fd5f139fc73983dfa1104f459160df4f72
             $table->string('name');
             $table->string('age');
             $table->string('size');
