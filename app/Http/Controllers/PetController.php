@@ -374,7 +374,7 @@ class PetController extends Controller
 
           // Create a new object
           $pet = new pet;
-          
+
           $pet->organization_id =  $organization_id;
           $pet->description     =  $request->get('description');
           $pet->age             =  $request->get('age');
