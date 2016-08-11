@@ -80,4 +80,6 @@ Route::group(['middleware' => ['web']], function(){
           if(auth()->guard('volunteer')->check()){
               print_r(auth()->guard('volunteer')->user()->toArray());
           }
+
+          dd(auth()->guard('organization'));
       });

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Pet;
 use Auth;
+use Session;
 
 class PetController extends Controller
 {
@@ -348,6 +349,7 @@ class PetController extends Controller
     {
 
         $pets = Pet::paginate(20);
+
         return view ('pets.index', compact('pets'));
     }
 
@@ -360,49 +362,77 @@ class PetController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only(
-          'description',
-          'age',
-          'pet_type',
-          'size',
-          'name',
-          'breed'
-      );
-        $pets = Pet::create($data);
-        return \Redirect::route('pets.index');
+
+      // Check what the user is
+      if (auth()->guard('organization')) {
+
+          $organization_id = Auth()->guard('organization')->id();
+
+      }else{
+
+          $organization_id = Auth()->guard('volunteer')->id();
+      }
+
+          // Create a new object
+          $pet = new pet;
+
+          $pet->organization_id =  $organization_id;
+          $pet->description     =  $request->get('description');
+          $pet->age             =  $request->get('age');
+          $pet->pet_type        =  $request->get('pet_type');
+          $pet->size            =  $request->get('size');
+          $pet->name            =  $request->get('name');
+          $pet->breed           =  $request->get('breed');
+
+          $pet->save();
+
+          // Send a feedback menssage if the save function run
+          Session::flash('success', 'Successfully saved your new tag!');
+
+          // return to the pet index page
+          return \Redirect::route('pets.index');
     }
 
     public function show($id)
     {
-        //
+
     }
 
     public function edit($id)
     {
+        // find the ped id
         $pet = Pet::find($id);
 
+        // return to the view edit with the pet id
         return view('pets.edit', compact('pet'));
     }
 
 
+
     public function update(Request $request, $id)
     {
-
+        // Edit only this informations
         $data = $request->only(
-        'name',
-        'description',
-        'age',
-        'pet_type',
-        'size'
+          'name',
+          'description',
+          'age',
+          'pet_type',
+          'size'
         );
+
+        // fint the pet id
         $pets = Pet::find($id);
+
+        // update
         $pets->update($data);
         return \Redirect::to('/pets');
     }
 
     public function destroy($id)
     {
+      // fint the id pet and destroy
       Pet::destroy($id);
+
       return \Redirect::to('/pets');
 
     }
