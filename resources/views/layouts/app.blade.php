@@ -89,7 +89,7 @@
 
                     <!-- Authentication Links -->
                     {{-- @if (Auth::guest()) --}}
-                    @if (auth()->guard('organization')->guest())
+                    @if (auth()->guard('organization')->guest() && auth()->guard('volunteer')->guest())
 
                       <li><a href="{{ url('/organization/login') }}">Org Login</a></li>
                       {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
