@@ -18,10 +18,10 @@ class Pets extends Migration
 
         Schema::create('pets', function ($table) {
             $table->increments('id')->unique();
-            // $table->integer('organization_id')->unsigned()->nullable(); // temporary;
+            $table->integer('organization_id')->unsigned()->nullable(); // temporary;
             $table->string('name');
-            $table->string('age');
-            $table->string('size');
+            $table->integer('age');
+            $table->integer('size');
             $table->string('pet_type');
             $table->string('breed');
             $table->text('description');
@@ -30,10 +30,10 @@ class Pets extends Migration
         });
 
 
-        // Schema::table('pets', function(Blueprint $table)
-        // {
-        //     $table->foreign('organization_id')->references('id')->on('organizations');
-        // });
+         Schema::table('pets', function(Blueprint $table)
+         {
+             $table->foreign('organization_id')->references('id')->on('organizations');
+         });
 
     }
 

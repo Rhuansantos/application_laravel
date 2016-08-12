@@ -15,7 +15,7 @@ class Volunteers extends Migration
 
     Schema::create('volunteers', function (Blueprint $table) {
         $table->increments('id')->unique();
-        // $table->integer('organization_id')->unsigned()->nullable();
+        $table->integer('organization_id')->unsigned()->nullable();
         $table->string('name');
         $table->string('lastname');
         $table->boolean('active')->nullable();
@@ -26,10 +26,10 @@ class Volunteers extends Migration
     });
 
 
-    // Schema::table('volunteers', function(Blueprint $table)
-    // {
-    //     $table->foreign('organization_id')->references('id')->on('organizations');
-    // });
+     Schema::table('volunteers', function(Blueprint $table)
+     {
+         $table->foreign('organization_id')->references('id')->on('organizations');
+     });
 
 
     }
